@@ -182,14 +182,15 @@ body {
 }
 
 .about {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  max-width: 900px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto;
+  justify-items: center;
+  align-content: center;
+  row-gap: 4px;
   width: 100%;
+  max-width: 900px;
   margin: 0 auto;
-  text-align: center;
 }
 
 .about-photo {
@@ -200,7 +201,7 @@ body {
 
 .about-title {
   --contrast: 1;
-  margin: 30px 0 0;
+  margin: 0;
   font-size: 40px;
   font-weight: 700;
   color: transparent;
@@ -217,8 +218,8 @@ body {
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  margin: 0;
   padding: 0;
-  margin-top: 15px;
   color: #787878;
   font-family: "Inter", sans-serif;
   font-weight: 400;
