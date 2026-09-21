@@ -4,6 +4,13 @@
   font-weight: 700;
 }
 
+@font-face {
+  font-family: "Inter";
+  src: url(fonts/Inter_18pt-Regular.ttf) format("truetype");
+  font-weight: 400;
+  font-size: normal;
+}
+
 html,
 body {
   margin: 0;
@@ -172,4 +179,54 @@ body {
   50% {
     opacity: 0.7;
   }
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-title {
+  --contrast: 1;
+  margin: 30px 0 0;
+  font-size: 40px;
+  font-weight: 700;
+  color: transparent;
+  background-image: url("images/background_blur.png");
+  background-size: 100vw 100vh;
+  background-position: center;
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter: brightness(5) contrast(var(--contrast));
+  will-change: filter;
+}
+
+.about-description {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0;
+  margin-top: 15px;
+  color: #787878;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+}
+
+.about-photo img {
+  width: 45%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 50%;
 }
