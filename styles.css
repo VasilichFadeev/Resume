@@ -3,11 +3,15 @@
   src: url("fonts/Manrope-Bold.ttf") format("truetype");
   font-weight: 700;
 }
+
+html,
 body {
   margin: 0;
-  position: relative;
-  overflow: hidden;
   font-family: "Manrope", sans-serif;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 .bg {
@@ -16,7 +20,14 @@ body {
   background-image: url("images/background.jpeg");
   background-size: cover;
   background-position: center;
+  transform: scale(1.1);
   z-index: -1;
+}
+
+.bg--blur {
+  background-image: url("images/background_blur.png");
+  opacity: 0;
+  will-change: opacity;
 }
 
 /* Приветственный текст */
@@ -30,12 +41,18 @@ body {
 }
 
 .greeting-text {
+  --gray: 0;
+
   font-size: 120px;
   font-weight: 700;
   color: white;
+  filter: grayscale(var(--gray));
+  will-change: filter, opacity;
 }
 
 .greeting-blur {
+  --gray: 0;
+
   position: absolute;
   inset: 0;
   display: flex;
@@ -49,12 +66,12 @@ body {
   background-image: url("images/background.jpeg");
   background-size: 100vw 100vh;
   background-position: center;
-  background-attachment: fixed;
 
   -webkit-background-clip: text;
   background-clip: text;
 
-  filter: blur(6px) brightness(1.3);
+  filter: blur(6px) brightness(1.3) grayscale(var(--gray));
+  will-change: filter, opacity;
 }
 
 @keyframes wobble {
@@ -90,13 +107,28 @@ body {
 .greeting-text,
 .greeting-blur {
   animation: wobble 21s ease-in-out infinite;
-  will-change: transform;
 }
 
-/* Стрелки внизу */
+@media (max-width: 600px) {
+  .greeting-text,
+  .greeting-blur {
+    font-size: 15vw;
+  }
+}
+
+/* Второй слайд */
+
+.section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Стрелки */
 
 .scroll-hint {
-  position: absolute;
+  position: fixed;
   left: 50%;
   bottom: 32px;
   transform: translateX(-50%);
@@ -104,104 +136,40 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 4px;
+  z-index: 10;
   pointer-events: none;
+
+  opacity: 1;
+  transition: opacity 0.4s ease;
 }
 
-@keyframes arrow-fade {
-  0% {
-    opacity: 0;
-  }
-  4% {
-    opacity: 0.06;
-  }
-  8% {
-    opacity: 0.12;
-  }
-  12% {
-    opacity: 0.18;
-  }
-  16% {
-    opacity: 0.24;
-  }
-  20% {
-    opacity: 0.3;
-  }
-  24% {
-    opacity: 0.36;
-  }
-  28% {
-    opacity: 0.42;
-  }
-  32% {
-    opacity: 0.48;
-  }
-  36% {
-    opacity: 0.54;
-  }
-  40% {
-    opacity: 0.6;
-  }
-  44% {
-    opacity: 0.54;
-  }
-  48% {
-    opacity: 0.48;
-  }
-  52% {
-    opacity: 0.42;
-  }
-  56% {
-    opacity: 0.36;
-  }
-  60% {
-    opacity: 0.3;
-  }
-  64% {
-    opacity: 0.24;
-  }
-  68% {
-    opacity: 0.18;
-  }
-  72% {
-    opacity: 0.12;
-  }
-  76% {
-    opacity: 0.06;
-  }
-  80% {
-    opacity: 0;
-  }
-  84% {
-    opacity: 0;
-  }
-  88% {
-    opacity: 0;
-  }
-  92% {
-    opacity: 0;
-  }
-  96% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
-  }
+.scroll-hint.hidden {
+  opacity: 0;
 }
 
 .arrow {
   width: 18px;
   height: auto;
   opacity: 0;
-  animation: arrow-fade 6.5s linear infinite;
-  will-change: opacity;
+  animation: arrow-fade 1.8s ease-in-out infinite;
 }
 
 .arrow-1 {
   animation-delay: 0s;
 }
 .arrow-2 {
-  animation-delay: 0.75s;
+  animation-delay: 0.2s;
 }
 .arrow-3 {
-  animation-delay: 1.5s;
+  animation-delay: 0.4s;
+}
+
+@keyframes arrow-fade {
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.7;
+  }
 }
