@@ -3,6 +3,8 @@ const bgBlur = document.querySelector(".bg--blur");
 const text = document.querySelector(".greeting-text");
 const blur = document.querySelector(".greeting-blur");
 const hint = document.querySelector(".scroll-hint");
+const aboutTitle = document.querySelector(".about-title");
+const aboutSection = document.getElementById("section-1");
 
 let ticking = false;
 let idleTimer = null;
@@ -21,7 +23,19 @@ function update() {
   text.style.animationPlayState = paused ? "paused" : "running";
   blur.style.animationPlayState = paused ? "paused" : "running";
 
+  updateAbout();
+
   ticking = false;
+}
+
+function updateAbout() {
+  const rect = aboutSection.getBoundingClientRect();
+
+  const progress = Math.min(Math.max((vh - rect.top) / vh, 0), 1);
+
+  const contrast = 1 - progress * 0.7;
+
+  aboutTitle.style.setProperty("--contrast", contrast);
 }
 
 function onScroll() {
