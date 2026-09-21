@@ -5,17 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Резюме</title>
     <link rel="stylesheet" href="styles.css" />
+    <script src="scripts/scroll_blur.js" defer></script>
   </head>
+
   <body>
     <div class="bg"></div>
+    <div class="bg bg--blur"></div>
+
     <div class="greeting">
       <div class="greeting-text">Привет</div>
       <div class="greeting-blur">Привет</div>
-      <div class="scroll-hint">
-        <img src="images/down_arrow.svg" alt="" class="arrow arrow-1" />
-        <img src="images/down_arrow.svg" alt="" class="arrow arrow-2" />
-        <img src="images/down_arrow.svg" alt="" class="arrow arrow-3" />
-      </div>
+    </div>
+
+    <div class="section" id="section-1">
+      <p style="color: white; font-size: 32px">
+        Тестовый текст для проверки скролла
+      </p>
+    </div>
+
+    <div class="scroll-hint">
+      <img src="images/down_arrow.svg" alt="" class="arrow arrow-1" />
+      <img src="images/down_arrow.svg" alt="" class="arrow arrow-2" />
+      <img src="images/down_arrow.svg" alt="" class="arrow arrow-3" />
     </div>
   </body>
 </html>
