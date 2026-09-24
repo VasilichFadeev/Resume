@@ -1,5 +1,6 @@
 const bg = document.querySelector(".bg");
 const bgBlur = document.querySelector(".bg--blur");
+const bgSolid = document.querySelector(".bg--solid");
 const text = document.querySelector(".greeting-text");
 const blur = document.querySelector(".greeting-blur");
 const hint = document.querySelector(".scroll-hint");
@@ -14,6 +15,9 @@ function update() {
   const progress = Math.min(window.scrollY / vh, 1);
 
   bgBlur.style.opacity = progress;
+
+  const solidProgress = Math.min(Math.max((window.scrollY - vh) / vh, 0), 1);
+  bgSolid.style.opacity = solidProgress;
 
   text.style.opacity = 1 - progress;
   blur.style.opacity = 1 - progress;
