@@ -226,8 +226,13 @@ body {
 }
 
 .about-photo img {
-  width: 45%;
+  width: 40%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 50%;
+}
+
+.about-title h1,
+.about-description p {
+  margin: 0;
 }
