@@ -67,3 +67,20 @@ window.addEventListener("resize", () => {
 });
 
 update();
+
+const fadeSections = document.querySelectorAll(
+  "#section-3, #section-4, #section-5, #section-6, #section-7",
+);
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
+    });
+  },
+  { threshold: 0.2 },
+);
+
+fadeSections.forEach((section) => observer.observe(section));
