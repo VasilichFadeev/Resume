@@ -325,3 +325,24 @@ body {
   max-width: none;
   margin: 0 auto;
 }
+
+#section-3,
+#section-4,
+#section-5,
+#section-6,
+#section-7 {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+#section-3.visible,
+#section-4.visible,
+#section-5.visible,
+#section-6.visible,
+#section-7.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
